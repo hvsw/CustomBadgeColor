@@ -8,13 +8,17 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+final class SecondViewController: UIViewController, ViewControllerWithTabBarItemBadge {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.showTabBarItemBadge(true)
     }
-
-
+    
+    @IBAction func toggleSwitch(_ sender: Any) {
+        guard let enableBadgeSwitch = sender as? UISwitch else {
+            return
+        }
+        
+        self.showTabBarItemBadge(enableBadgeSwitch.isOn)
+    }
 }
-
